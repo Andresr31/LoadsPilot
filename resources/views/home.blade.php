@@ -1,23 +1,38 @@
 @extends('layouts.app')
-
+@section('title','Piloto Cargues - Home')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <img class="my-2 img-top-card img-fluid" width="500px" src="{{ asset('images/elements/dashboard.svg') }}" alt="Img dahsboard">
+                <div class="card-header-cargues text-center">
+                    <h4>
+                        <i class="fa fa-clipboard-list"></i>
+                        Escritorio
+                        |
+                        <small>
+                            <i class="fas fa-user-ninja"></i> Administrador
+                        </small>
+                    </h4>
+                </div>
+                <div class="card-body row">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
+                    <div class="col-md-4 my-4">
+                        <div class="card text-center">
+                            <img src="{{ asset('images/elements/bg-users.svg') }}" alt="users" width="200px" class="my-2 img-top-card">
+                            <div class="card-body">
+                                <a href="{{ route('users.index') }}" class="btn btn-primary btn-block" style="background-color: #2471A3">
+                                    <i class="fa fa-users"></i>
+                                    Módulo Usuarios
+                                </a>
+                            </div>
                         </div>
-                    @endif
+                    </div>
 
-                    {{ __('You are logged in!') }}
                 </div>
             </div>
         </div>
     </div>
-</div>
+
 @endsection
