@@ -61,6 +61,13 @@
             });
 
             /* --- */
+            $('#qr').change(function(event) {
+                let reader = new FileReader();
+                reader.onload = function(event) {
+                    $('#preview').attr('src', event.target.result);
+                }
+                reader.readAsDataURL(this.files[0]);
+            });
 
             @if(session('message'))
                 Swal.fire({

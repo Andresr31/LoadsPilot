@@ -30,6 +30,30 @@
                         </div>
                     </div>
 
+                    <div class="col-md-4 my-4">
+                        <div class="card text-center">
+                            <img src="{{ asset('images/elements/bg-products.svg') }}" alt="products" width="200px" class="my-2 img-top-card pt-2">
+                            <div class="card-body">
+                                <a href="{{ route('products.index') }}" class="btn btn-primary btn-block" style="background-color: #2471A3">
+                                    <i class="fa fa-list-alt"></i>
+                                    Módulo Productos
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 my-4">
+                        <div class="card text-center">
+                            <img src="{{ asset('images/elements/bg-cargues.svg') }}" alt="products" width="200px" class="my-2 img-top-card">
+                            <div class="card-body">
+                                <a href="{{ route('products.index') }}" class="btn btn-primary btn-block" style="background-color: #2471A3">
+                                    <i class="fa fa-tasks"></i>
+                                    Módulo Cargues
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
