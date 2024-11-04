@@ -36,7 +36,7 @@
 
     {{-- Scripts --}}
     <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script> --}}
     <script src="{{ asset('js/jquery.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
     <script src="{{ asset('js/html5-qrcode.min.js') }}"></script>

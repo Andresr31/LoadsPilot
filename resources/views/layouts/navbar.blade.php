@@ -42,17 +42,17 @@
 
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             @if (Auth::user()->role->name == 'Admin')
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('users.index') }}" class="dropdown-item">
                                     <i class="fa fa-users"></i>
                                     Módulo Usuarios
                                 </a>
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('products.index') }}" class="dropdown-item">
                                     <i class="fa fa-list-alt"></i>
-                                    Módulo Categorias
+                                    Módulo Productos
                                 </a>
-                                <a href="#" class="dropdown-item">
-                                    <i class="fa fa-film"></i>
-                                    Módulo Peliculas
+                                <a href="{{ route('loads.index') }}" class="dropdown-item">
+                                    <i class="fa fa-tasks"></i>
+                                    Módulo Cargues
                                 </a>
 
                             @endif
