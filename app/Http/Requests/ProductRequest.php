@@ -25,9 +25,6 @@ class ProductRequest extends FormRequest
             'material'  => 'required',
             'reference'     => 'required',
             'lote'   => 'required',
-            'date_of_manufacture'  => 'required',
-            'expiration_date'     => 'required',
-            'amount'   => 'required',
         ];
     }
 }

@@ -56,6 +56,7 @@
                     </div>
                 </div>
 
+                @if ($product->date_of_manufacture)
                 <div class="mb-3">
                     <label for="date_of_manufacture">Fecha de fabricación <strong>(FF)</strong></label>
 
@@ -63,7 +64,10 @@
                         <input id="date_of_manufacture" type="text" class="form-control" name="date_of_manufacture" value="{{ $product->date_of_manufacture }}" disabled>
                     </div>
                 </div>
+                @endif
 
+
+                @if ($product->expiration_date)
                 <div class="mb-3">
                     <label for="expiration_date">Fecha de vencimiento <strong>(FV)</strong></label>
 
@@ -71,7 +75,10 @@
                         <input id="expiration_date" type="text" class="form-control" name="expiration_date" value="{{ $product->expiration_date }}" disabled>
                     </div>
                 </div>
+                @endif
 
+
+                @if ($product->amount)
                 <div class="mb-3">
                     <label for="amount">Cantidad <strong>(CANT)</strong></label>
 
@@ -79,11 +86,33 @@
                         <input id="amount" type="text" class="form-control" name="amount" value="{{$product->amount }}" disabled>
                     </div>
                 </div>
+                @endif
+
+                @if ($product->lote_provider)
+                <div class="mb-3">
+                    <label for="lote_provider">Lote proveedor <strong>(LOT PROVEE)</strong> </label>
+
+                    <div class="">
+                        <input id="lote_provider" type="text" class="form-control" name="lote_provider" value="{{$product->lote_provider }}" disabled>
+                    </div>
+                </div>
+                @endif
+
+                @if ($product->responsible)
+                <div class="mb-3">
+                    <label for="responsible">Responsable <strong>(RESP)</strong> </label>
+
+                    <div class="">
+                        <input id="responsible" type="text" class="form-control" name="responsible" value="{{$product->responsible }}" disabled>
+                    </div>
+                </div>
+                @endif
+
 
                 <div class="mb-3">
                     <label for="qr">QR</label>
                     <div class="text-center my-3">
-                        <img id="qr" src="{{ asset($product->qr_url) }}" alt="no-qr" class="img-thumbnail" id="preview" width="120px">
+                        <img id="qr" src="{{ asset($product->qr_url) }}" alt="no-qr" class="img-thumbnail" id="preview" width="220px">
                     </div>
 
                 </div>

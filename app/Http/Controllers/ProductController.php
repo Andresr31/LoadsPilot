@@ -79,11 +79,29 @@ class ProductController extends Controller
         $product->date_of_manufacture = $request->date_of_manufacture;
         $product->expiration_date = $request->expiration_date;
         $product->amount = $request->amount;
+        $product->lote_provider = $request->lote_provider;
+        $product->responsible = $request->responsible;
         $product->user_id = Auth::user()->id;
 
         if($product->save()){
 
-            $data = $product->id;
+            // $data = 'http://192.168.10.18/CarguesAlpina/public/loads/product/'.$product->id;
+            // $data = '{id:'.$product->id.
+            //         ',material:'.$product->material.
+            //         ',reference:'.$product->reference.
+            //         ',lote:'.$product->lote.
+            //         ',date_of_manufacture:'.'"'.$product->date_of_manufacture.'"'.
+            //         ',expiration_date:'.'"'.$product->expiration_date.'"'.
+            //         ',amount:'.$product->amount.
+            //         ',lote_provider:'.$product->lote_provider.
+            //         ',responsible:'.$product->responsible.
+            //         ',user_id:'.$product->user_id.'}';
+
+            $data = '{"id":"'.$product->id.
+                    '","material":"'.$product->material.
+                    '","reference":"'.$product->reference.
+                    '","lote":"'.$product->lote.
+                    '","user_id":"'.$product->user_id.'"}';
 
             // Create QR code
             $builder = new Builder(
@@ -93,9 +111,12 @@ class ProductController extends Controller
                 data: $data,
                 encoding: new Encoding('UTF-8'),
                 errorCorrectionLevel: ErrorCorrectionLevel::High,
-                size: 300,
+                size: 400,
                 margin: 10,
                 roundBlockSizeMode: RoundBlockSizeMode::Margin,
+                labelText: 'ID: '.$product->id,
+                labelFont: new OpenSans(20),
+                labelAlignment: LabelAlignment::Center
             );
 
             $qrCode = $builder->build();
@@ -120,15 +141,21 @@ class ProductController extends Controller
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $product = Product::find($id);
-
         Carbon::setLocale('es');
-        $date = Carbon::parse($product->date_of_manufacture);
-        $date = $date->format('d-M-Y');
-        $product->date_of_manufacture = $date;
 
-        $date = Carbon::parse($product->expiration_date);
-        $date = $date->format('d-M-Y');
-        $product->expiration_date = $date;
+        if($product->date_of_manufacture){
+            $date = Carbon::parse($product->date_of_manufacture);
+            $date = $date->format('d-M-Y');
+            $product->date_of_manufacture = $date;
+        }
+
+        if($product->expiration_date){
+            $date = Carbon::parse($product->expiration_date);
+            $date = $date->format('d-M-Y');
+            $product->expiration_date = $date;
+        }
+
+
         return view('elements.products.show')->with('product',$product);
     }
 
@@ -178,7 +205,15 @@ class ProductController extends Controller
     {
         if(Auth::user()->role->name != 'Admin'){
             return redirect('home')->with('error','No puede acceder a este recurso');
-       }
+        }
+
+        if($product->qr_url){
+            $file = public_path().'/'.$product->qr_url;
+            if (getimagesize($file)) {
+                unlink($file);
+            }
+        }
+
 
         if($product->delete()){
             return redirect('products')->with('message','El producto: '.$product->material.' ha sido eliminado existosamente!!');

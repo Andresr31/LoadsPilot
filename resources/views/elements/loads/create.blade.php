@@ -1,12 +1,12 @@
 @extends('layouts.app')
-@section('title', 'Piloto Cargues - Crear producto')
+@section('title', 'Piloto Cargues - Crear cargue')
 
 @section('content')
 
     <div class="row py-4 px-4">
         <div class="col-md-10 offset-md-1">
             <h1 style="color: #0146cf;">
-                <i class="fa fa-plus"></i> Agregar Producto
+                <i class="fa fa-plus"></i> Agregar cargue
             </h1>
             <hr>
             <nav aria-label="breadcrumb">
@@ -18,9 +18,9 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ route('products.index') }}">
-                            <i class="fa fa-list-alt"></i>
-                            Módulo Productos
+                        <a href="{{ route('loads.indexLoad') }}">
+                            <i class="fa fa-tasks"></i>
+                            Módulo Cargas
                         </a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">

@@ -46,7 +46,7 @@
                         <div class="card text-center">
                             <img src="{{ asset('images/elements/bg-cargues.svg') }}" alt="products" width="200px" class="my-2 img-top-card">
                             <div class="card-body">
-                                <a href="{{ route('products.index') }}" class="btn btn-primary btn-block" style="background-color: #2471A3">
+                                <a href="{{ route('loads.index') }}" class="btn btn-primary btn-block" style="background-color: #2471A3">
                                     <i class="fa fa-tasks"></i>
                                     Módulo Cargues
                                 </a>

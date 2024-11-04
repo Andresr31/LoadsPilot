@@ -21,6 +21,8 @@ class Product extends Model
         'expiration_date',
         'amount',
         'user_id',
+        'lote_provider',
+        'responsible'
     ];
 
     ////////////////////////////////////

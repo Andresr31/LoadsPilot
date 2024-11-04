@@ -1,13 +1,10 @@
 @extends('layouts.app')
-@section('title', 'Piloto Cargues - Ver Producto')
+@section('title', 'Piloto Cargues - Ver Cargue')
 
 @section('content')
-
-    <div class="row py-4 px-4">
+    <div class="row">
         <div class="col-md-10 offset-md-1">
-            <h1 style="color: #0146cf;">
-                <i class="fa fa-search"></i> Ver Producto
-            </h1>
+            <h1 style="color: #0146cf;"><i class="fa fa-tasks"></i> Ver Cargue</h1>
             <hr>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
@@ -18,76 +15,68 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item">
-                        <a href="{{ route('products.index') }}">
-                            <i class="fa fa-list-alt"></i>
-                            Módulo Productos
+                        <a href="{{ route('loads.indexLoad') }}">
+                            <i class="fa fa-tasks"></i>
+                            Módulo Cargues
                         </a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
                         <i class="fa fa-search"></i>
-                            Ver Producto
+                            Ver Cargue
                     </li>
+
                 </ol>
             </nav>
-            <div>
-
-                <div class="mb-3">
-                    <label for="material">Material <strong>(MAT)</strong></label>
-
-                    <div class="">
-                        <input id="material" type="text" class="form-control" name="material" value="{{ $product->material }}" disabled>
-
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="reference">Referencia <strong>(REF)</strong></label>
-
-                    <div class="">
-                        <input id="reference" type="text" class="form-control" name="reference" value="{{ $product->reference}}" disabled>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="lote">Lote <strong>(LOT ALPINA)</strong></label>
-
-                    <div class="">
-                        <input id="lote" type="text" class="form-control" name="lote" value="{{ $product->lote }}" disabled>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="date_of_manufacture">Fecha de fabricación <strong>(FF)</strong></label>
-
-                    <div class="">
-                        <input id="date_of_manufacture" type="text" class="form-control" name="date_of_manufacture" value="{{ $product->date_of_manufacture }}" disabled>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="expiration_date">Fecha de vencimiento <strong>(FV)</strong></label>
-
-                    <div class="">
-                        <input id="expiration_date" type="text" class="form-control" name="expiration_date" value="{{ $product->expiration_date }}" disabled>
-                    </div>
-                </div>
-
-                <div class="mb-3">
-                    <label for="amount">Cantidad <strong>(CANT)</strong></label>
-
-                    <div class="">
-                        <input id="amount" type="text" class="form-control" name="amount" value="{{$product->amount }}" disabled>
-                    </div>
-                </div>
-
-
-                <div class="d-grid gap-2 mb-3">
-                    <a href="{{ route('products.index') }}" class="btn btn-primary btn-block" style="background-color: #2471A3"><i class="fa fa-arrow-left mx-2"></i> Volver </a>
-                </div>
-
+            <form action="{{ route('loads.close') }}" method="post" class="d-inline">
+                @csrf
+                <input type="text" name="load_id" id="load_id" value="{{$load->id}}" hidden>
+                <button type="submit" class="btn btn-primary my-3" style="background-color: #2471A3">
+                    <i class="fa fa-minus-circle pr-2"></i>
+                    Cerrar Cargue
+                </button>
             </form>
+            @isset($products)
+                @if (count($products) >0)
+
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col"># Tacho</th>
+                                <th scope="col">MAT</th>
+                                <th scope="col">REF</th>
+                                <th scope="col">LOT</th>
+                                <th scope="col">FF</th>
+                                <th scope="col">FV</th>
+                                <th scope="col">Agregado en:</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($products->sortByDesc('id') as $product)
+                                <tr>
+                                    <td>{{ $product->tacho->description }}</td>
+                                    <td>{{ $product->product->material }}</td>
+                                    <td>{{ $product->product->reference }}</td>
+                                    <td>{{ $product->product->lote }}</td>
+                                    <td>{{ $product->product->date_of_manufacture }}</td>
+                                    <td>{{ $product->product->expiration_date }}</td>
+                                    <td>{{ $product->created_at }}</td>
+                                </tr>
+
+                            @endforeach
+                        </tbody>
+
+                    </table>
+                    {{ $products->links() }}
+                @else
+                    <div class="alert alert-warning my-4" role="alert">
+                        Aún no hay productos registrados en el cargue actual
+                    </div>
+                @endif
+
+
+            @endisset
+
         </div>
     </div>
-
 
 @endsection

@@ -32,7 +32,7 @@
             <form action="{{ route('products.store') }}" method="POST">
                 @csrf
                 <div class="mb-3">
-                    <label for="material">Material <strong>(MAT)</strong></label>
+                    <label for="material">Material <strong>(MAT)</strong> *</label>
 
                     <div class="">
                         <input id="material" type="text" class="form-control @error('material') is-invalid @enderror" name="material" value="{{ old('material') }}" required autofocus>
@@ -46,10 +46,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="reference">Referencia <strong>(REF)</strong></label>
+                    <label for="reference">Referencia <strong>(REF)</strong> *</label>
 
                     <div class="">
-                        <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" value="{{ old('reference') }}" required autocomplete="reference" autofocus>
+                        <input id="reference" type="text" class="form-control @error('reference') is-invalid @enderror" name="reference" value="{{ old('reference') }}" required>
 
                         @error('reference')
                             <span class="invalid-feedback" role="alert">
@@ -60,10 +60,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="lote">Lote <strong>(LOT ALPINA)</strong></label>
+                    <label for="lote">Lote <strong>(LOT ALPINA)</strong> *</label>
 
                     <div class="">
-                        <input id="lote" type="text" class="form-control @error('lote') is-invalid @enderror" name="lote" value="{{ old('lote') }}" required autocomplete="lote" autofocus>
+                        <input id="lote" type="text" class="form-control @error('lote') is-invalid @enderror" name="lote" value="{{ old('lote') }}">
 
                         @error('lote')
                             <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
                     <label for="date_of_manufacture">Fecha de fabricación <strong>(FF)</strong></label>
 
                     <div class="">
-                        <input id="date_of_manufacture" type="date" class="form-control @error('date_of_manufacture') is-invalid @enderror" name="date_of_manufacture" value="{{ old('date_of_manufacture') }}" required autocomplete="date_of_manufacture" autofocus>
+                        <input id="date_of_manufacture" type="date" class="form-control @error('date_of_manufacture') is-invalid @enderror" name="date_of_manufacture" value="{{ old('date_of_manufacture') }}">
 
                         @error('date_of_manufacture')
                             <span class="invalid-feedback" role="alert">
@@ -91,7 +91,7 @@
                     <label for="expiration_date">Fecha de vencimiento <strong>(FV)</strong></label>
 
                     <div class="">
-                        <input id="expiration_date" type="date" class="form-control @error('expiration_date') is-invalid @enderror" name="expiration_date" value="{{ old('expiration_date') }}" required autocomplete="expiration_date" autofocus>
+                        <input id="expiration_date" type="date" class="form-control @error('expiration_date') is-invalid @enderror" name="expiration_date" value="{{ old('expiration_date') }}">
 
                         @error('expiration_date')
                             <span class="invalid-feedback" role="alert">
@@ -105,9 +105,37 @@
                     <label for="amount">Cantidad <strong>(CANT)</strong></label>
 
                     <div class="">
-                        <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" required autocomplete="amount" autofocus>
+                        <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}">
 
                         @error('amount')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="lote_provider">Lote proveedor <strong>(LOT PROVEE)</strong></label>
+
+                    <div class="">
+                        <input id="lote_provider" type="text" class="form-control @error('lote_provider') is-invalid @enderror" name="lote_provider" value="{{ old('lote_provider') }}">
+
+                        @error('lote_provider')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="responsible">Responsable <strong>(RESP)</strong></label>
+
+                    <div class="">
+                        <input id="responsible" type="text" class="form-control @error('responsible') is-invalid @enderror" name="responsible" value="{{ old('responsible') }}">
+
+                        @error('responsible')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

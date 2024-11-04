@@ -15,17 +15,21 @@ return new class extends Migration
             $table->id();
 
             // Foreign Keys
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onUpdate('cascade')
+                                                                     ->onDelete('cascade');
 
-            $table->unsignedBigInteger('load_id');
-            $table->foreign('load_id')->references('id')->on('loads');
+            $table->unsignedBigInteger('load_id')->nullable();
+            $table->foreign('load_id')->references('id')->on('loads')->onUpdate('cascade')
+                                                                     ->onDelete('cascade');
 
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')
+                                                                           ->onDelete('cascade');
 
             $table->unsignedBigInteger('tacho_id');
-            $table->foreign('tacho_id')->references('id')->on('tachos');
+            $table->foreign('tacho_id')->references('id')->on('tachos')->onUpdate('cascade')
+                                                                       ->onDelete('cascade');
 
             $table->timestamps();
         });
