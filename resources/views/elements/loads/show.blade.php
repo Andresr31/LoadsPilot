@@ -34,7 +34,12 @@
                     <i class="fa fa-minus-circle pr-2"></i>
                     Cerrar Cargue
                 </button>
+                <a href="{{ route('loads.generatePDF',$load->id) }}" class="btn btn-primary my-3" style="background-color: #2471A3">
+                    <i class="fa fa-file-pdf"></i>
+                    Exportar PDF
+                </a>
             </form>
+
             @isset($products)
                 @if (count($products) >0)
 

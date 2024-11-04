@@ -17,9 +17,12 @@ Route::get('/loads/product', [App\Http\Controllers\LoadController::class, 'showA
 Route::post('/loads/close', [App\Http\Controllers\LoadController::class, 'closeLoad'])->name('loads.close');
 Route::get('/loads/index', [App\Http\Controllers\LoadController::class, 'indexLoad'])->name('loads.indexLoad');
 
-Route::get('/test', [App\Http\Controllers\LoadController::class, 'test'])->name('test');
+// Route::get('/test', [App\Http\Controllers\LoadController::class, 'test'])->name('test');
 
 Route::get('/loads/{id}/product', [App\Http\Controllers\LoadController::class, 'registerProduct'])->name('loads.registerProduct');
+
+Route::get('/generate/pdf/loads/{id}', [App\Http\Controllers\LoadController::class, 'generatePDF'])->name('loads.generatePDF');
+
 
 Route::resources([
     'users' => UserController::class,

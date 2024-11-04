@@ -21,9 +21,9 @@ class LoadController extends Controller
         $this->middleware('auth', ['except' => ['homeLoad','addProduct','showAddProduct']]);
     }
 
-    public function test(){
-        return view('elements.test');
-    }
+    // public function test(){
+    //     return view('elements.test');
+    // }
     public function registerProduct($id){
         $load = Load::find($id);
 
@@ -41,6 +41,14 @@ class LoadController extends Controller
         if($load->save()){
             return redirect('/loads/index')->with('message','El cargue ha sido cerrado existosamente!!');
         }
+    }
+
+    public function generatePDF($id){
+        $load = Load::find($id);
+        $products = LoadProduct::where('load_id',$id)->get();
+        $pdf = \PDF::loadView('elements.loads.pdf-loads', compact('products','load'));
+        return $pdf->download('report_cargue'.$id.'.pdf');
+
     }
 
 
