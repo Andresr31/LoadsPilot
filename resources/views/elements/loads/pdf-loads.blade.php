@@ -49,7 +49,7 @@
                     <td>{{ $product->product->lote }}</td>
                     <td>{{ $product->product->date_of_manufacture }}</td>
                     <td>{{ $product->product->expiration_date }}</td>
-                    <td>{{ $product->created_at }}</td>
+                    <td>{{ explode(" ",$product->created_at)[0]}}</td>
                 </tr>
 
             @endforeach

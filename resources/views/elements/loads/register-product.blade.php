@@ -34,7 +34,7 @@
                 </ol>
             </nav>
 
-            <form action="{{ route('loads.add') }}" method="POST">
+            <form action="{{ route('loads.add') }}" id="formRegisterLoadProduct" method="POST">
                 @csrf
                 <input type="text" name="load_id" id="load_id" value="{{$load->id}}" hidden>
                 <div class="mb-3">
@@ -72,6 +72,54 @@
                 </div>
 
             </form>
+            @isset($products)
+                @if (count($products) >0)
+
+                    <table class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th scope="col"># Tacho</th>
+                                <th scope="col">MAT</th>
+                                <th scope="col">REF</th>
+                                <th scope="col">LOT</th>
+                                <th scope="col">FF</th>
+                                <th scope="col">FV</th>
+                                <th scope="col">Agregado en:</th>
+                                <th scope="col">Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($products->sortByDesc('id') as $product)
+                                <tr>
+                                    <td>{{ $product->tacho->description }}</td>
+                                    <td>{{ $product->product->material }}</td>
+                                    <td>{{ $product->product->reference }}</td>
+                                    <td>{{ $product->product->lote }}</td>
+                                    <td>{{ $product->product->date_of_manufacture }}</td>
+                                    <td>{{ $product->product->expiration_date }}</td>
+                                    <td>{{ explode(" ",$product->created_at)[0]}}</td>
+                                    <td>
+                                        <form action="{{ route('loads.deleteProductLoad',$product->id) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('delete')
+                                            <button type="button" class="btn btn-sm btn-danger btn-delete"><i class="fa fa-trash"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+
+                            @endforeach
+                        </tbody>
+
+                    </table>
+                    {{ $products->links() }}
+                @else
+                    <div class="alert alert-warning my-4" role="alert">
+                        Aún no hay productos registrados en el cargue actual
+                    </div>
+                @endif
+
+
+            @endisset
     </div>
 
 

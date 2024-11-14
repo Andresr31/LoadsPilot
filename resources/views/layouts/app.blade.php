@@ -118,18 +118,20 @@
             const qrConfig = {
                 fps: 10,
                 qrbox: {
-                    width: 250,
-                    height: 250
+                    width: 300,
+                    height: 300
                 }
             };
             const qrOnSuccess = (decodedText, decodedResult) => {
                 stopScanner(); // Stop the scanner
+
                 // console.log(`Message: ${decodedText}, Result: ${JSON.stringify(decodedResult)}`);
                 // console.log(String(decodedText));
                 // console.log(JSON.parse(String(decodedText)).id);
                 $("#product_load_id").val(JSON.parse(String(decodedText)).id); // Set the value of the barcode field
                 // $("#update_form").trigger("submit"); // Submit form to backend
                 $("#start_reader").show();
+                $('#formRegisterLoadProduct').submit();
             };
 
             // Methods: start / stop

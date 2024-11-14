@@ -23,6 +23,7 @@ Route::get('/loads/{id}/product', [App\Http\Controllers\LoadController::class, '
 
 Route::get('/generate/pdf/loads/{id}', [App\Http\Controllers\LoadController::class, 'generatePDF'])->name('loads.generatePDF');
 
+Route::delete('/loads/product/{id}', [App\Http\Controllers\LoadController::class, 'deleteProductLoad'])->name('loads.deleteProductLoad');
 
 Route::resources([
     'users' => UserController::class,

@@ -47,7 +47,7 @@
                                     <td>{{ $product->reference }}</td>
                                     <td>{{ $product->date_of_manufacture }}</td>
                                     <td>{{ $product->expiration_date }}</td>
-                                    <td>{{ $product->created_at }}</td>
+                                    <td>{{explode(" ",$product->created_at)[0] }}</td>
                                     <td>
                                         <a href="{{ route('products.show',$product->id)}}" class="btn btn-sm btn-light"> <i class="fa fa-search"></i> </a>
                                         <a href="{{ route('products.edit',$product->id)}}" class="btn btn-sm btn-light"> <i class="fa fa-pen"></i> </a>

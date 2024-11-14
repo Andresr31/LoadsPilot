@@ -28,7 +28,8 @@ class LoadController extends Controller
         $load = Load::find($id);
 
         if($load){
-            return view('elements.loads.register-product')->with('load',$load);
+            $products = LoadProduct::where('load_id',$id)->paginate(10);
+            return view('elements.loads.register-product')->with('load',$load)->with('products',$products);
         }else{
             return redirect('/loads/index')->with('message-error','El cargue no fue encontrado');
         }
@@ -209,6 +210,24 @@ class LoadController extends Controller
 
         if($load->delete()){
             return redirect('/loads/index')->with('message','El cargue ha sido eliminado existosamente!!');
+        }
+
+    }
+
+    /**
+     * Eliminar un registro
+     * DELETE
+     */
+    public function deleteProductLoad($id)
+    {
+        $product = LoadProduct::find($id);
+        if(Auth::user()->role->name != 'Admin'){
+            return redirect('home')->with('error','No puede acceder a este recurso');
+        }
+
+
+        if($product->delete()){
+            return back()->with('message','El producto: '.$product->product->material.' ha sido eliminado del cargue existosamente!!');
         }
 
     }

@@ -34,7 +34,7 @@
                         <thead>
                             <tr>
                                 <th scope="col">Id</th>
-                                <th scope="col">Estado</th>
+                                {{-- <th scope="col">Estado</th> --}}
                                 <th scope="col">Fecha</th>
                                 <th scope="col">Hora</th>
                                 <th scope="col">Acciones</th>
@@ -42,17 +42,20 @@
                         </thead>
                         <tbody>
                             @foreach ($loads->sortByDesc('id') as $load)
-                                <tr>
-                                    <td>{{ $load->id }}</td>
-                                    <td> @if ($load->state == 'OPEN') <small class="badge bg-success">ABIERTO</small> @else <small class="badge bg-danger">CERRADO</small> @endif</td>
-                                    <td>{{ $load->date }}</td>
-                                    <td>{{ $load->hour }}</td>
-                                    <td>
-                                        <a class="btn btn-sm btn-primary px-2" href="{{route('loads.registerProduct',$load->id)}}" > <i class="fa fa-plus"></i> Seleccionar </a>
+                                @if ($load->state == 'OPEN')
+                                    <tr>
+                                        <td>{{ $load->id }}</td>
+                                        {{-- <td> @if ($load->state == 'OPEN') <small class="badge bg-success">ABIERTO</small> @else <small class="badge bg-danger">CERRADO</small> @endif</td> --}}
+                                        <td>{{ $load->date }}</td>
+                                        <td>{{ $load->hour }}</td>
+                                        <td>
+                                            <a class="btn btn-sm btn-primary px-2" href="{{route('loads.registerProduct',$load->id)}}" > <i class="fa fa-plus"></i> Seleccionar </a>
 
-                                    </td>
+                                        </td>
 
-                                </tr>
+                                    </tr>
+                                @endif
+
 
                             @endforeach
                         </tbody>

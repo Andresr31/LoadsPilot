@@ -43,6 +43,8 @@ class ProductController extends Controller
             $date = Carbon::parse($product->expiration_date);
             $date = $date->format('d-M-Y');
             $product->expiration_date = $date;
+
+
         }
         return view('elements.products.index')->with('products',$products);
     }
@@ -97,11 +99,15 @@ class ProductController extends Controller
             //         ',responsible:'.$product->responsible.
             //         ',user_id:'.$product->user_id.'}';
 
+            // $data = '{"id":"'.$product->id.
+            //         '","material":"'.$product->material.
+            //         '","reference":"'.$product->reference.
+            //         '","lote":"'.$product->lote.
+            //         '","user_id":"'.$product->user_id.'"}';
+
             $data = '{"id":"'.$product->id.
-                    '","material":"'.$product->material.
                     '","reference":"'.$product->reference.
-                    '","lote":"'.$product->lote.
-                    '","user_id":"'.$product->user_id.'"}';
+                    '","lote":"'.$product->lote.'"}';
 
             // Create QR code
             $builder = new Builder(
