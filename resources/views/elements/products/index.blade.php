@@ -33,6 +33,7 @@
                                 <th scope="col">Id</th>
                                 <th scope="col">Material (MAT)</th>
                                 <th scope="col">Referencia (REF)</th>
+                                <th scope="col">Cantidad (Kg) (CANT)</th>
                                 <th scope="col">Fecha de fabricación (FF)</th>
                                 <th scope="col">Fecha de vencimiento (FV)</th>
                                 <th scope="col">Fecha de creación </th>
@@ -45,6 +46,7 @@
                                     <td>{{ $product->id }}</td>
                                     <td>{{ $product->material }}</td>
                                     <td>{{ $product->reference }}</td>
+                                    <td>{{ $product->amount }}</td>
                                     <td>{{ $product->date_of_manufacture }}</td>
                                     <td>{{ $product->expiration_date }}</td>
                                     <td>{{explode(" ",$product->created_at)[0] }}</td>

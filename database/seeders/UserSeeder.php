@@ -14,9 +14,9 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         $user = new User;
-        $user->fullname = 'Homero Simpson';
-        $user->email = 'homero@gmail.com';
-        $user->password = '12345678';
+        $user->fullname = 'Admin';
+        $user->email = 'admin@alpina.com';
+        $user->password = 'admin';
         $user->role_id = 1;
         $user->save();
     }

@@ -29,11 +29,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-       if(Auth::user()->role->name != 'Admin'){
+       if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         // $products = User::all();
-        $products = Product::paginate(10);
+        $products = Product::paginate(40);
         foreach ($products as $product) {
             Carbon::setLocale('es');
             $date = Carbon::parse($product->date_of_manufacture);
@@ -55,7 +55,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
 
@@ -69,7 +69,7 @@ class ProductController extends Controller
      */
     public function store(ProductRequest $request)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $product = new Product;
@@ -121,7 +121,7 @@ class ProductController extends Controller
                 margin: 10,
                 roundBlockSizeMode: RoundBlockSizeMode::Margin,
                 labelText: 'ID: '.$product->id,
-                labelFont: new OpenSans(20),
+                labelFont: new OpenSans(30),
                 labelAlignment: LabelAlignment::Center
             );
 
@@ -143,7 +143,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $product = Product::find($id);
@@ -171,7 +171,7 @@ class ProductController extends Controller
      */
     public function edit(string $id)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $product = Product::find($id);
@@ -184,7 +184,7 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, string $id)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
        $product = Product::find($id);
@@ -209,7 +209,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
         }
 

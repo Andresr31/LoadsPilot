@@ -28,7 +28,7 @@ class LoadController extends Controller
         $load = Load::find($id);
 
         if($load){
-            $products = LoadProduct::where('load_id',$id)->paginate(10);
+            $products = LoadProduct::where('load_id',$id)->paginate(40);
             return view('elements.loads.register-product')->with('load',$load)->with('products',$products);
         }else{
             return redirect('/loads/index')->with('message-error','El cargue no fue encontrado');
@@ -82,10 +82,10 @@ class LoadController extends Controller
     public function showAddProduct()
     {
         // $product = Product::find($id);
-        // $loads = Load::paginate(10)->sortByDesc('id');
-        $loads = Load::paginate(10);
+        // $loads = Load::paginate(40)->sortByDesc('id');
+        $loads = Load::paginate(40);
         // dd($loads);
-        // $loads = Load::paginate(10);
+        // $loads = Load::paginate(40);
         return view('elements.loads.add-product')->with('loads',$loads);
     }
     /**
@@ -103,10 +103,10 @@ class LoadController extends Controller
      */
     public function indexLoad()
     {
-        // $loads = Load::paginate(10)->sortByDesc('id');
-        $loads = Load::paginate(10);
+        // $loads = Load::paginate(40)->sortByDesc('id');
+        $loads = Load::paginate(40);
         // dd($loads);
-        // $loads = Load::paginate(10);
+        // $loads = Load::paginate(40);
         return view('elements.loads.index')->with('loads',$loads);
     }
 
@@ -159,7 +159,7 @@ class LoadController extends Controller
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
        $load = Load::find($id);
-        $products = LoadProduct::where('load_id',$id)->paginate(10);
+        $products = LoadProduct::where('load_id',$id)->paginate(40);
         return view('elements.loads.show')->with('products',$products)->with('load',$load);
     }
 

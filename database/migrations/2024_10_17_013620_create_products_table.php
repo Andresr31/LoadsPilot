@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('qr_url')->nullable();
             $table->date('date_of_manufacture')->nullable();
             $table->date('expiration_date')->nullable();
-            $table->string('amount')->nullable();
+            $table->float('amount')->nullable();
             $table->string('lote_provider')->nullable();
             $table->string('responsible')->nullable();
 

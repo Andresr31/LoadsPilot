@@ -24,7 +24,7 @@ class UserController extends Controller
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         // $users = User::all();
-        $users = User::paginate(10);
+        $users = User::paginate(20);
         return view('elements.users.index')->with('users',$users);
     }
 

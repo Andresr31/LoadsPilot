@@ -103,10 +103,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="amount">Cantidad <strong>(CANT)</strong></label>
+                    <label for="amount">Cantidad (Kg)<strong>(CANT)</strong></label>
 
                     <div class="">
-                        <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ $product->amount }}" required autocomplete="amount" autofocus>
+                        <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ $product->amount }}" required autocomplete="amount" autofocus>
 
                         @error('amount')
                             <span class="invalid-feedback" role="alert">
@@ -116,10 +116,39 @@
                     </div>
                 </div>
 
+                <div class="mb-3">
+                    <label for="lote_provider">Lote proveedor <strong>(LOT PROVEE)</strong></label>
+
+                    <div class="">
+                        <input id="lote_provider" type="text" class="form-control @error('lote_provider') is-invalid @enderror" name="lote_provider" value="{{ $product->lote_provider }}">
+
+                        @error('lote_provider')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="responsible">Responsable <strong>(RESP)</strong></label>
+
+                    <div class="">
+                        <input id="responsible" type="text" class="form-control @error('responsible') is-invalid @enderror" name="responsible" value="{{ $product->responsible }}">
+
+                        @error('responsible')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                </div>
 
 
                 <div class="d-grid gap-2 mb-3">
+
                     <button type="submit" class="btn btn-primary btn-block" style="background-color: #2471A3"> Actualizar <i class="fa fa-save mx-2"></i></button>
+
                 </div>
 
             </form>

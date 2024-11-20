@@ -12,7 +12,7 @@
                         Escritorio
                         |
                         <small>
-                            <i class="fas fa-user-ninja"></i> Administrador
+                            <i class="fas fa-user-ninja"></i> {{Auth::user()->role->name}}
                         </small>
                     </h4>
                 </div>

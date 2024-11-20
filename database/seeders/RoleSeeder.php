@@ -17,5 +17,10 @@ class RoleSeeder extends Seeder
         $role->name = 'Admin';
         $role->description = 'Administrador del sistema';
         $role->save();
+
+        $role = new Role;
+        $role->name = 'Operator';
+        $role->description = 'Operador del sistema';
+        $role->save();
     }
 }

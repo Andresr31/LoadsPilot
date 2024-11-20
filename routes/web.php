@@ -9,7 +9,8 @@ Route::get('/', function () {
     return redirect('login');
 });
 
-Auth::routes();
+// Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::post('/loads/product', [App\Http\Controllers\LoadController::class, 'addProduct'])->name('loads.add');

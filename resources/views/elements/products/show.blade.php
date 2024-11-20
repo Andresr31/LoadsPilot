@@ -80,7 +80,7 @@
 
                 @if ($product->amount)
                 <div class="mb-3">
-                    <label for="amount">Cantidad <strong>(CANT)</strong></label>
+                    <label for="amount">Cantidad (Kg) <strong>(CANT)</strong></label>
 
                     <div class="">
                         <input id="amount" type="text" class="form-control" name="amount" value="{{$product->amount }}" disabled>

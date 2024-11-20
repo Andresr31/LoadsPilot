@@ -102,10 +102,10 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="amount">Cantidad <strong>(CANT)</strong></label>
+                    <label for="amount">Cantidad (Kg) <strong>(CANT)</strong></label>
 
                     <div class="">
-                        <input id="amount" type="text" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}">
+                        <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}">
 
                         @error('amount')
                             <span class="invalid-feedback" role="alert">
