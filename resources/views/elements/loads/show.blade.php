@@ -38,6 +38,10 @@
                     <i class="fa fa-file-pdf"></i>
                     Exportar PDF
                 </a>
+                <a href="{{ route('loads.generateExcel',$load->id)  }}" class="btn btn-primary my-3" style="background-color: #2471A3">
+					<i class="fa fa-file-excel"></i>
+					Exportar Excel
+				</a>
             </form>
 
             @isset($products)

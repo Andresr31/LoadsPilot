@@ -24,6 +24,8 @@ Route::get('/loads/{id}/product', [App\Http\Controllers\LoadController::class, '
 
 Route::get('/generate/pdf/loads/{id}', [App\Http\Controllers\LoadController::class, 'generatePDF'])->name('loads.generatePDF');
 
+Route::get('/generate/excel/loads/{id}', [App\Http\Controllers\LoadController::class, 'generateExcel'])->name('loads.generateExcel');
+
 Route::delete('/loads/product/{id}', [App\Http\Controllers\LoadController::class, 'deleteProductLoad'])->name('loads.deleteProductLoad');
 
 Route::resources([

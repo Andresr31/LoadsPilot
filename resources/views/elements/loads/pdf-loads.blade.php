@@ -37,7 +37,7 @@
                 <th scope="col">MAT</th>
                 <th scope="col">REF</th>
                 <th scope="col">LOT</th>
-                <th scope="col">CANT</th>
+                <th scope="col">CANT (KG)</th>
                 <th scope="col">FF</th>
                 <th scope="col">FV</th>
                 <th scope="col">Agregado en:</th>
@@ -60,5 +60,7 @@
         </tbody>
 
     </table>
+    <hr>
+    <h4>Cantidad total: {{$suma}} KG</h4>
 </body>
 </html>

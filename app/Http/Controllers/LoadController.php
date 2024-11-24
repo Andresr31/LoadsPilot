@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
+use App\Exports\ReportLoadExport;
+
 
 class LoadController extends Controller
 {
@@ -47,10 +49,21 @@ class LoadController extends Controller
     public function generatePDF($id){
         $load = Load::find($id);
         $products = LoadProduct::where('load_id',$id)->get();
-        $pdf = \PDF::loadView('elements.loads.pdf-loads', compact('products','load'));
+
+        $suma = 0;
+        foreach ($products as $product) {
+            $suma += $product->product->amount;
+        }
+
+        $pdf = \PDF::loadView('elements.loads.pdf-loads', compact('products','load','suma'));
         return $pdf->download('report_cargue'.$id.'.pdf');
 
     }
+
+    public function generateExcel($id){
+        return \Excel::download(new ReportLoadExport($id), 'report_cargue'.$id.'.xlsx');
+    }
+
 
 
     public function addProduct(Request $request){
