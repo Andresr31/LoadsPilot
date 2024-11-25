@@ -105,7 +105,7 @@
                     <label for="amount">Cantidad (Kg) <strong>(CANT)</strong></label>
 
                     <div class="">
-                        <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}">
+                        <input id="amount" type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ old('amount') }}" step="any">
 
                         @error('amount')
                             <span class="invalid-feedback" role="alert">
