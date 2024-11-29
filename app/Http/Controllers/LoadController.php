@@ -129,7 +129,7 @@ class LoadController extends Controller
      */
     public function create()
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $roles = Role::all();
@@ -143,7 +143,7 @@ class LoadController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $load = new Load;
@@ -168,7 +168,7 @@ class LoadController extends Controller
     public function show(string $id)
     {
 
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
        $load = Load::find($id);
@@ -182,7 +182,7 @@ class LoadController extends Controller
      */
     public function edit(string $id)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $load = Load::find($id);
@@ -196,7 +196,7 @@ class LoadController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
         $load = Load::find($id);
@@ -217,7 +217,7 @@ class LoadController extends Controller
      */
     public function destroy(Load $load)
     {
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
        }
 
@@ -234,7 +234,7 @@ class LoadController extends Controller
     public function deleteProductLoad($id)
     {
         $product = LoadProduct::find($id);
-        if(Auth::user()->role->name != 'Admin'){
+        if(Auth::user()->role->name != 'Admin' && Auth::user()->role->name != 'Operator'){
             return redirect('home')->with('error','No puede acceder a este recurso');
         }
 
